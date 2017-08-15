@@ -13,10 +13,10 @@ This shader will allow to decode/encode on the GPU YUY2 footage (please see here
 
 It's using subroutines for easier modularity (you can use a single openGL program even if you have different format, just change the subroutines on runtime). In order to change subroutine, on can do as follow:
 	
-	GLuint indices[this->_colourSubroutines.totalSubroutines]; // Query using openGL 	glGetProgramStageiv(COLOUR_PROGRAM_ID, GL_FRAGMENT_SHADER, GL_ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS, &this->_colourSubroutines.totalSubroutines);
+	GLuint indices[this->_colourSubroutines.totalSubroutines]; // Query using openGL glGetProgramStageiv(COLOUR_PROGRAM_ID, GL_FRAGMENT_SHADER, GL_ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS, &this->_colourSubroutines.totalSubroutines);
 	
 	indices[this->_colourSubroutines.colourConversion.loc] = this->getAppropriateShaderRoutineFromMetadata(metadata, this->_colourSubroutines.colourConversion);	
-	//When now set our subroutines index table to the shader stage.
+	//We now set our subroutines index table to the shader stage.
 	glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, this->_colourSubroutines.totalSubroutines, indices);
 
 At the moment, this shader allows you to encode/decode from to:
